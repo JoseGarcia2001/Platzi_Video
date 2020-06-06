@@ -1,0 +1,35 @@
+body {
+  margin: 0;
+  background-color: #8f57fd;
+  font-family: "Muli", sans-serif;
+}
+
+.header {
+  background-color: #8f57fd;
+  width: 100%;
+  height: 80px;
+}
+
+.header__img {
+  width: 200px;
+  margin-top: 10px;
+  margin-left: 10px;
+}
+
+.header__menu {
+  margin-right: 30px;
+}
+
+.header__menu ul {
+  /* display: none; */
+  list-style: none;
+  padding: 0;
+  position: absolute;
+  width: 100px;
+  text-align: right;
+}
+
+.header__menu--profile {
+  width: 40px;
+  margin-right: 8px;
+}
