@@ -122,6 +122,7 @@ ul:hover {
   cursor: pointer;
   transition: 450ms all;
   transform-origin: center left;
+  position: relative;
 }
 
 .carousel-item:hover ~ .carousel-item {
@@ -143,4 +144,19 @@ ul:hover {
   object-fit: cover;
 }
 
-.carousel-item__details;
+.carousel-item__details {
+  background: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0.9) 0%,
+    rgba(0, 0, 0, 0) 100%
+  );
+  font-size: 10px;
+  opacity: 0;
+  transition: 450ms opacity;
+  padding: 10px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
