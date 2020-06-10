@@ -94,15 +94,37 @@ ul:hover {
   outline: none;
 }
 
+.categories__title {
+  color: white;
+  font-size: 16px;
+  position: absolute;
+  padding-left: 30px;
+  width: 100%;
+}
+
 ::placeholder {
   color: white;
 }
 
+.carousel__complete {
+  margin: 0 40px;
+}
 .carousel {
   width: 100%;
   overflow: scroll;
-  padding: 30px;
+  padding: 30px 30px 10px 30px;
   position: relative;
+}
+
+.carousel::-webkit-scrollbar {
+  width: 10px;
+  background-color: #8f57fd;
+}
+
+.carousel::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  border: 2px solid #8f57fd;
 }
 
 .carousel__container {
@@ -150,6 +172,7 @@ ul:hover {
     rgba(0, 0, 0, 0.9) 0%,
     rgba(0, 0, 0, 0) 100%
   );
+  color: white;
   font-size: 10px;
   opacity: 0;
   transition: 450ms opacity;
@@ -159,4 +182,40 @@ ul:hover {
   left: 0;
   right: 0;
   bottom: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding-bottom: 20px;
+}
+
+.carousel-item__details-img {
+  width: 20px;
+}
+
+.carousel-item__details p {
+  margin: 0;
+  margin-top: 5px;
+}
+
+.carousel-item__details:hover {
+  opacity: 1;
+}
+
+.footer {
+  background-color: #8f57fd;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 100px;
+}
+
+.footer a {
+  color: white;
+  text-decoration: none;
+  cursor: pointer;
+  padding-left: 30px;
+}
+
+.footer a:hover {
+  text-decoration: underline;
 }

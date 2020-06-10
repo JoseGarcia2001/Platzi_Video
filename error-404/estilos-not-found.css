@@ -1,0 +1,71 @@
+body {
+  margin: 0;
+  font-family: "Muli", sans-serif;
+}
+
+.header {
+  background-color: #21c08b;
+  width: 100%;
+  height: 100px;
+}
+
+.header__img {
+  width: 200px;
+  margin-top: 10px;
+  margin-left: 10px;
+}
+
+.info__container {
+  background: linear-gradient(#21c08b, #ab88ff);
+  width: 100%;
+  min-height: calc(100vh - 200px);
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.info__containe--important {
+  font-size: 100px;
+  margin: 0;
+  animation-fill-mode: both;
+  animation-iteration-count: infinite;
+  animation-name: pulse;
+  animation-duration: 1s;
+}
+
+.info__container--message {
+  margin: 0;
+}
+
+.footer {
+  background-color: #ab88ff;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 100px;
+}
+
+.footer a {
+  color: white;
+  text-decoration: none;
+  cursor: pointer;
+  padding-left: 30px;
+}
+
+.footer a:hover {
+  text-decoration: underline;
+}
