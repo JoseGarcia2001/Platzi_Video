@@ -106,10 +106,6 @@ ul:hover {
   color: white;
 }
 
-.carousel__complete {
-  margin: 0 40px;
-}
-
 .carousel {
   width: 100%;
   overflow: scroll;
