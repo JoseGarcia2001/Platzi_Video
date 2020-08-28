@@ -1,6 +1,7 @@
+/* eslint-disable quotes */
 const path = require("path");
 const HTMLWebPackPlugin = require("html-webpack-plugin");
-const MiniCssExtractPlugin = require("mini-css-extract-plugin")
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 module.exports = {
   entry: "./src/index.js",
@@ -35,9 +36,20 @@ module.exports = {
             loader: MiniCssExtractPlugin.loader,
           },
           "css-loader",
-          "sass-loader"
-        ]
-      }
+          "sass-loader",
+        ],
+      },
+      {
+        test: /\.(png|gif|jpg)$/,
+        use: [
+          {
+            'loader': 'file-loader',
+            options: {
+              name: 'assets/[hash].[ext]',
+            },
+          },
+        ],
+      },
     ],
   },
   plugins: [
@@ -46,7 +58,7 @@ module.exports = {
       filename: "./index.html",
     }),
     new MiniCssExtractPlugin({
-      filename: "assets/[name].css"
-    })
+      filename: "assets/[name].css",
+    }),
   ],
 };
