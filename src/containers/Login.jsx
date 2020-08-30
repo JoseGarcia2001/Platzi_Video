@@ -1,13 +1,18 @@
+/* eslint-disable jsx-a11y/no-noninteractive-tabindex */
+/* eslint-disable react/button-has-type */
+/* eslint-disable jsx-a11y/label-has-associated-control */
 import React from 'react';
-import Header from '../components/Header';
-import Footer from '../components/Footer'
+import '../assets/styles/components/Login.scss';
+import googleIcon from '../assets/static/google-icon.png';
+import TwitterIcon from '../assets/static/twitter-icon.png';
+// import Header from '../components/Header';
+// import Footer from '../components/Footer'
 
 const Login = () => (
-  <Header />
 
   <section className="login">
     <section className="login__container">
-      <h2 tabindex="0">Inicia sesión</h2>
+      <h2 tabIndex="0">Inicia sesión</h2>
       <form className="login__container--form">
         <input
           aria-label="correo"
@@ -29,28 +34,28 @@ const Login = () => (
               name=""
               id="cbox1"
               value="checkbox"
-            />Recuérdame
+            />
+            Recuérdame
           </label>
-          <a href="">Olvidé mi contraseña</a>
+          <a href="/">Olvidé mi contraseña</a>
         </div>
       </form>
       <section className="login__container--social-media">
         <div>
-          <img src="../assets/google-icon.png" alt="Google" />
+          <img src={googleIcon} alt="Google" />
           Inicia sesión con Google
         </div>
         <div>
-          <img src="../assets/twitter-icon.png" alt="Twitter" />
+          <img src={TwitterIcon} alt="Twitter" />
           Inicia sesión con Twitter
         </div>
       </section>
       <p className="login__container--register">
-        No tienes ninguna cuenta <a href="">Regístrate</a>
+        No tienes ninguna cuenta
+        <a href="/">Regístrate</a>
       </p>
     </section>
   </section>
-
-  <Footer />
 );
 
 export default Login;
