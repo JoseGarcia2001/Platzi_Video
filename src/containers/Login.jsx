@@ -2,6 +2,7 @@
 /* eslint-disable react/button-has-type */
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import React from 'react';
+import { Link } from 'react-router-dom';
 import '../assets/styles/components/Login.scss';
 import googleIcon from '../assets/static/google-icon.png';
 import TwitterIcon from '../assets/static/twitter-icon.png';
@@ -9,7 +10,6 @@ import TwitterIcon from '../assets/static/twitter-icon.png';
 // import Footer from '../components/Footer'
 
 const Login = () => (
-
   <section className="login">
     <section className="login__container">
       <h2 tabIndex="0">Inicia sesión</h2>
@@ -29,12 +29,7 @@ const Login = () => (
         <button className="button">Iniciar sesión</button>
         <div className="login__container--remember-me">
           <label>
-            <input
-              type="checkbox"
-              name=""
-              id="cbox1"
-              value="checkbox"
-            />
+            <input type="checkbox" name="" id="cbox1" value="checkbox" />
             Recuérdame
           </label>
           <a href="/">Olvidé mi contraseña</a>
@@ -52,7 +47,7 @@ const Login = () => (
       </section>
       <p className="login__container--register">
         No tienes ninguna cuenta
-        <a href="/">Regístrate</a>
+        <Link to="/register">Regístrate</Link>
       </p>
     </section>
   </section>
