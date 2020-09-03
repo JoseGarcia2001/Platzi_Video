@@ -7,14 +7,6 @@ import Carousel from '../components/Carousel';
 import CarouselItem from '../components/CarouselItem';
 import '../assets/styles/App.scss';
 
-const mapStateToProps = (state) => {
-  return {
-    myList: state.myList,
-    trends: state.trends,
-    originals: state.originals,
-  };
-};
-
 const Home = ({ myList, trends, originals }) => {
 
   return (
@@ -50,6 +42,14 @@ const Home = ({ myList, trends, originals }) => {
 
     </>
   );
+};
+
+const mapStateToProps = (state) => {
+  return {
+    myList: state.myList,
+    trends: state.trends,
+    originals: state.originals,
+  };
 };
 
 export default connect(mapStateToProps, null)(Home);
