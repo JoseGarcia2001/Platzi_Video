@@ -15,11 +15,13 @@ const CarouselItem = (props) => {
     props.setFavorite({
       id, title, cover, year, duration, contentRating,
     });
-    document.getElementById('icon-plus').src = checkIcon;
+    document.getElementById(id).src = checkIcon;
   };
 
   const handleDeleteFavorite = () => {
     props.deleteFavorite(id);
+    document.getElementById(id).src = iconPlus;
+
   };
 
   return (
@@ -43,7 +45,7 @@ const CarouselItem = (props) => {
           ) : (
             <img
               className="carousel-item__details-img"
-              id="icon-plus"
+              id={id}
               src={iconPlus}
               alt="Más"
               onClick={handleSetFavorite}

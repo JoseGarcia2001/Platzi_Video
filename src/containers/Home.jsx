@@ -7,8 +7,8 @@ import Carousel from '../components/Carousel';
 import CarouselItem from '../components/CarouselItem';
 import '../assets/styles/App.scss';
 
-const Home = ({ myList, trends, originals }) => {
-
+const Home = (props) => {
+  const { myList, trends, originals } = props;
   return (
     <>
       <Search />
