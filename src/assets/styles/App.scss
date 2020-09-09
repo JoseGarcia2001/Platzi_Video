@@ -1,7 +1,8 @@
 @import "./Vars.scss";
 
 body {
-  margin: 0;
+  margin: 0 auto;
   background-color: $main-color;
   font-family: $theme-font;
+  overflow-x: hidden;
 }

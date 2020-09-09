@@ -60,6 +60,7 @@
 }
 
 .login__container--register {
+  display: flex;
   font-size: 14px;
 }
 
@@ -68,6 +69,7 @@
   font-weight: bold;
   color: white;
   text-decoration: none;
+  margin-left: 15px;
 }
 
 .login__container--register a:hover {
@@ -85,7 +87,7 @@
   margin-bottom: 20px;
   padding: 0px 20px;
   outline: none;
-  height: 50px;
+  height: 60px;
 }
 
 ::placeholder {

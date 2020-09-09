@@ -1,9 +1,13 @@
 .footer {
-  background-color: #8f57fd;
+  background-color: #ab88ff;
   display: flex;
   align-items: center;
   width: 100%;
   height: 100px;
+}
+
+.isHome {
+  background-color: #8f57fd;
 }
 
 .footer a {

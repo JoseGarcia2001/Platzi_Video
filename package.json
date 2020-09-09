@@ -21,6 +21,7 @@
   "homepage": "https://github.com/JoseGarcia2001/Platzi_Video#readme",
   "dependencies": {
     "babel-eslint": "^10.1.0",
+    "classnames": "^2.2.6",
     "eslint": "^7.7.0",
     "eslint-config-airbnb": "^18.2.0",
     "eslint-plugin-import": "^2.22.0",

@@ -35,6 +35,15 @@ const reducer = (state, action) => {
         user: action.payload,
       };
 
+    case 'GET_VIDEO_SOURCE':
+      return {
+        ...state,
+        playing:
+          state.trends
+            .concat(state.originals)
+            .find((item) => item.id === +action.payload) || [],
+      };
+
     default:
       return state;
   }

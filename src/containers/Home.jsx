@@ -1,27 +1,26 @@
 /* eslint-disable react/jsx-props-no-spreading */
 import React from 'react';
 import { connect } from 'react-redux';
+import Header from '../components/Header';
 import Search from '../components/Search';
 import Categories from '../components/Categories';
 import Carousel from '../components/Carousel';
 import CarouselItem from '../components/CarouselItem';
 import '../assets/styles/App.scss';
+import Footer from '../components/Footer';
 
 const Home = (props) => {
   const { myList, trends, originals } = props;
   return (
     <>
+      <Header />
       <Search />
 
       {myList?.length > 0 && (
         <Categories title="Mi Lista">
           <Carousel>
             {myList?.map((item) => (
-              <CarouselItem
-                key={item.id}
-                {...item}
-                isList
-              />
+              <CarouselItem key={item.id} {...item} isList />
             ))}
           </Carousel>
         </Categories>
@@ -43,6 +42,7 @@ const Home = (props) => {
           ))}
         </Carousel>
       </Categories>
+      <Footer isHome />
     </>
   );
 };
