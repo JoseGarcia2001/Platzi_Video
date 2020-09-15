@@ -48,7 +48,6 @@ const Header = (props) => {
             ) :
             (
               <>
-                {null}
                 <li>
                   <Link to="/login">Iniciar Sesion</Link>
                 </li>
