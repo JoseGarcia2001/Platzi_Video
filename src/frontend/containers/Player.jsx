@@ -1,5 +1,5 @@
 /* eslint-disable react/destructuring-assignment */
-import React, { useLayoutEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import { getVideoSource } from '../actions';
@@ -10,7 +10,7 @@ const Player = (props) => {
 
   const [loading, setLoading] = useState(true);
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     props.getVideoSource(id);
     setLoading(false);
   }, []);
@@ -22,17 +22,17 @@ const Player = (props) => {
   };
 
   return hasPlaying ? (
-    <div className="player">
+    <div className='player'>
       <video controls autoPlay>
         <source
           src={props.playing.source}
-          type="video/mp4"
+          type='video/mp4'
         />
       </video>
-      <div className="Player-back">
+      <div className='Player-back'>
         <button
-          type="button"
-          className="Player-backButton"
+          type='button'
+          className='Player-backButton'
           onClick={() => {
             props.history.goBack();
           }}
@@ -41,7 +41,7 @@ const Player = (props) => {
         </button>
       </div>
     </div>
-  ) : <Redirect to="/404" />;
+  ) : <Redirect to='/404' />;
 };
 
 const mapStateToProps = (state) => ({

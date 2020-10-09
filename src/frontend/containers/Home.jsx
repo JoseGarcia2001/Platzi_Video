@@ -17,7 +17,7 @@ const Home = (props) => {
       <Search />
 
       {Object.keys(searching).length > 0 && (
-        <Categories title="Estas buscando">
+        <Categories title='Estas buscando'>
           <Carousel>
             {searching?.map((item) => (
               <CarouselItem key={item.id} {...item} />
@@ -27,7 +27,7 @@ const Home = (props) => {
       )}
 
       {myList?.length > 0 && (
-        <Categories title="Mi Lista">
+        <Categories title='Mi Lista'>
           <Carousel>
             {myList?.map((item) => (
               <CarouselItem key={item.id} {...item} isList />
@@ -36,7 +36,7 @@ const Home = (props) => {
         </Categories>
       )}
 
-      <Categories title="Tendencias">
+      <Categories title='Tendencias'>
         <Carousel>
           {trends?.map((item) => (
             <CarouselItem key={item.id} {...item} />
@@ -45,7 +45,7 @@ const Home = (props) => {
         </Carousel>
       </Categories>
 
-      <Categories title="Originales De Platzi Video">
+      <Categories title='Originales De Platzi Video'>
         <Carousel>
           {originals?.map((item) => (
             <CarouselItem key={item.id} {...item} />

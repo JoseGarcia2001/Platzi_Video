@@ -31,48 +31,48 @@ const Login = (props) => {
   return (
     <>
       <Header isLogin />
-      <section className="login">
-        <section className="login__container">
-          <h2 tabIndex="0">Inicia sesión</h2>
-          <form className="login__container--form" onSubmit={handleSubmit}>
+      <section className='login'>
+        <section className='login__container'>
+          <h2 tabIndex='0'>Inicia sesión</h2>
+          <form className='login__container--form' onSubmit={handleSubmit}>
             <input
-              name="email"
-              aria-label="correo"
-              className="input"
-              type="text"
-              placeholder="Correo"
+              name='email'
+              aria-label='correo'
+              className='input'
+              type='text'
+              placeholder='Correo'
               onChange={handleInput}
             />
             <input
-              name="password"
-              aria-label="contraseña"
-              className="input"
-              type="password"
-              placeholder="Contraseña"
+              name='password'
+              aria-label='contraseña'
+              className='input'
+              type='password'
+              placeholder='Contraseña'
               onChange={handleInput}
             />
-            <button className="button">Iniciar sesión</button>
-            <div className="login__container--remember-me">
+            <button className='button'>Iniciar sesión</button>
+            <div className='login__container--remember-me'>
               <label>
-                <input type="checkbox" name="" id="cbox1" value="checkbox" />
+                <input type='checkbox' name='' id='cbox1' value='checkbox' />
                 Recuérdame
               </label>
-              <a href="/">Olvidé mi contraseña</a>
+              <a href='/'>Olvidé mi contraseña</a>
             </div>
           </form>
-          <section className="login__container--social-media">
+          <section className='login__container--social-media'>
             <div>
-              <img src={googleIcon} alt="Google" />
+              <img src={googleIcon} alt='Google' />
               Inicia sesión con Google
             </div>
             <div>
-              <img src={TwitterIcon} alt="Twitter" />
+              <img src={TwitterIcon} alt='Twitter' />
               Inicia sesión con Twitter
             </div>
           </section>
-          <p className="login__container--register">
+          <p className='login__container--register'>
             ¿No tienes ninguna cuenta?
-            <Link to="/register">Regístrate</Link>
+            <Link to='/register'>Regístrate</Link>
           </p>
         </section>
       </section>

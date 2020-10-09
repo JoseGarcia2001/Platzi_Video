@@ -9,10 +9,10 @@ import Player from '../containers/Player';
 const App = () => (
   <BrowserRouter>
     <Switch>
-      <Route exact path="/" component={Home} />
-      <Route exact path="/login" component={Login} />
-      <Route exact path="/Register" component={Register} />
-      <Route exact path="/Player/:id" component={Player} />
+      <Route exact path='/' component={Home} />
+      <Route exact path='/login' component={Login} />
+      <Route exact path='/Register' component={Register} />
+      <Route exact path='/Player/:id' component={Player} />
       <Route component={NotFound} />
     </Switch>
   </BrowserRouter>
