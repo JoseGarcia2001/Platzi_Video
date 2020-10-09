@@ -14,7 +14,12 @@ const CarouselItem = (props) => {
 
   const handleSetFavorite = () => {
     props.setFavorite({
-      id, title, cover, year, duration, contentRating,
+      id,
+      title,
+      cover,
+      year,
+      duration,
+      contentRating,
     });
     document.getElementById(id).src = checkIcon;
   };
@@ -22,40 +27,39 @@ const CarouselItem = (props) => {
   const handleDeleteFavorite = () => {
     props.deleteFavorite(id);
     document.getElementById(id).src = iconPlus;
-
   };
 
   return (
-    <div className="carousel-item">
-      <img className="carousel-item__img" src={cover} alt={title} />
-      <div className="carousel-item__details">
+    <div className='carousel-item'>
+      <img className='carousel-item__img' src={cover} alt={title} />
+      <div className='carousel-item__details'>
         <div>
           <Link to={`/Player/${id}`}>
             <img
-              className="carousel-item__details-img"
+              className='carousel-item__details-img'
               src={iconPlay}
-              alt="Play"
+              alt='Play'
             />
           </Link>
           {isList ? (
             <img
-              className="carousel-item__details-img"
+              className='carousel-item__details-img'
               src={removeIcon}
-              alt="Remove"
+              alt='Remove'
               onClick={handleDeleteFavorite}
             />
           ) : (
             <img
-              className="carousel-item__details-img"
+              className='carousel-item__details-img'
               id={id}
               src={iconPlus}
-              alt="Más"
+              alt='Más'
               onClick={handleSetFavorite}
             />
           )}
 
-          <p className="carousel-item__details--title">{title}</p>
-          <p className="carousel-item__details--subtitle">
+          <p className='carousel-item__details--title'>{title}</p>
+          <p className='carousel-item__details--subtitle'>
             {`${year} ${contentRating} ${duration}`}
           </p>
         </div>
