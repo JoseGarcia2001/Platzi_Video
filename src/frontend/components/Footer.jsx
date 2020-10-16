@@ -7,9 +7,9 @@ const Footer = ({ isHome }) => {
 
   return (
     <footer className={footerClassname}>
-      <a href="/">Términos de uso</a>
-      <a href="/">Declaración de privacidad</a>
-      <a href="/">Centro de ayuda</a>
+      <a href='/'>Términos de uso</a>
+      <a href='/'>Declaración de privacidad</a>
+      <a href='/'>Centro de ayuda</a>
     </footer>
   );
 };
