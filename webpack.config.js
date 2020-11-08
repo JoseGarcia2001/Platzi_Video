@@ -1,13 +1,14 @@
 /* eslint-disable quotes */
 const path = require("path");
-const HTMLWebPackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const webpack = require('webpack');
 
 module.exports = {
-  entry: "./src/index.js",
+  entry: ["./src/frontend/index.js", "webpack-hot-middleware/client"],
+  mode: "development",
   output: {
     path: path.resolve(__dirname, "dist"),
-    filename: "bundle.js",
+    filename: "assets/app.js",
     publicPath: "/",
   },
   resolve: {
@@ -23,14 +24,6 @@ module.exports = {
         },
       },
       {
-        test: /\.html$/,
-        use: [
-          {
-            loader: "html-loader",
-          },
-        ],
-      },
-      {
         test: /\.(s*)css$/,
         use: [
           {
@@ -44,25 +37,19 @@ module.exports = {
         test: /\.(png|gif|jpg)$/,
         use: [
           {
-            'loader': 'file-loader',
+            loader: "file-loader",
             options: {
-              name: 'assets/[hash].[ext]',
+              name: "assets/[hash].[ext]",
             },
           },
         ],
       },
     ],
   },
-  devServer: {
-    historyApiFallback: true,
-  },
   plugins: [
-    new HTMLWebPackPlugin({
-      template: "./public/index.html",
-      filename: "./index.html",
-    }),
+    new webpack.HotModuleReplacementPlugin(),
     new MiniCssExtractPlugin({
-      filename: "assets/[name].css",
+      filename: "assets/app.css",
     }),
   ],
 };
