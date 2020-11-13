@@ -55,7 +55,7 @@ const reducer = (state, action) => {
       return {
         ...state,
         searching:
-          state.trends.concat(state.originals).filter((item) => item.title.toLowerCase().includes(action.payload)) || [],
+          state.trends.concat(state.originals).filter((item) => item.title.toLowerCase().includes(action.payload.toLowerCase())) || [],
       };
 
     default:

@@ -25,6 +25,21 @@ module.exports = {
   resolve: {
     extensions: [".js", ".jsx"],
   },
+  optimization: {
+    splitChunks: {
+      cacheGroups: {
+        vendors: {
+          name: 'vendors',
+          chunks: 'all',
+          reuseExistingChunk: true,
+          priority: 1,
+          filename: isDev ? "assets/vendor.js" : "assets/vendor-[contenthash].js",
+          enforce: true,
+          test: /[\\/]node_modules[\\/]/,
+        },
+      },
+    },
+  },
   module: {
     rules: [
       {
@@ -59,16 +74,15 @@ module.exports = {
   },
   plugins: [
     isDev ? new webpack.HotModuleReplacementPlugin() : () => {},
-    new MiniCssExtractPlugin({
-      filename: isDev ? "assets/app.css" : "assets/app-[hash].css",
-    }),
     isDev ?
       () => {} :
       new CompressionWebpackPlugin({
         test: /\.js$|\.css$/,
         filename: "[path][base].gz",
       }),
-    isDev ? () => { } :
-      new ManifestWebpackPlugin(),
+    isDev ? () => {} : new ManifestWebpackPlugin(),
+    new MiniCssExtractPlugin({
+      filename: isDev ? "assets/app.css" : "assets/app-[hash].css",
+    }),
   ],
 };
