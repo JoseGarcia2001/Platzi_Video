@@ -32,7 +32,7 @@ const Header = (props) => {
             src={hasUser ? gravatar(user.email) : userIcon}
             alt={hasUser ? user.email : 'userIcon'}
           />
-          <p>Perfil</p>
+          <p>{hasUser ? user.name : 'Perfil'}</p>
         </div>
         <ul>
           {hasUser ?
