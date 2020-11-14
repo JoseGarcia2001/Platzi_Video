@@ -1,7 +1,6 @@
 /* eslint-disable import/no-extraneous-dependencies */
 /* eslint-disable global-require */
 import express from 'express';
-import dotenv from 'dotenv';
 import React from 'react';
 import { renderToString } from 'react-dom/server';
 import { Provider } from 'react-redux';
@@ -9,18 +8,31 @@ import { createStore } from 'redux';
 import { StaticRouter } from 'react-router-dom';
 import { renderRoutes } from 'react-router-config';
 import helmet from 'helmet';
+import passport from 'passport';
+import axios from 'axios';
+import boom from '@hapi/boom';
+import cookieParser from 'cookie-parser';
+import session from 'express-session';
 import reducer from '../frontend/reducers';
 import serverRoutes from '../frontend/routes/serverRoutes';
 import initialState from '../frontend/initialState';
 import getManifest from './getManifest';
+import { config } from './config';
 
-dotenv.config();
+const { port, env } = config;
 
-const { PORT, ENV } = process.env;
+//Strategies
+require('./utils/auth/strategies/basic');
 
 const app = express();
 
-if (ENV === 'development') {
+app.use(express.json());
+app.use(cookieParser());
+app.use(session({ secret: config.sessionSecret }));
+app.use(passport.initialize());
+app.use(passport.session());
+
+if (env === 'development') {
   const WebpackDevMiddleware = require('webpack-dev-middleware');
   const webpack = require('webpack');
   const webpackConfig = require('../../webpack.config');
@@ -78,8 +90,50 @@ const renderApp = (req, res) => {
   res.send(setResponse(html, preloadedState, req.hasManifest));
 };
 
+app.post('/auth/sign-in', async (req, res, next) => {
+  passport.authenticate('basic', (error, data) => {
+    try {
+      if (error || !data) {
+        next(boom.unauthorized());
+      }
+
+      req.login(data, { session: false }, async (error) => {
+        if (error) {
+          next(error);
+        }
+
+        const { token, ...user } = data;
+
+        res.cookie('token', token, {
+          httpOnly: !config.dev,
+          secure: !config.dev,
+        });
+        res.status(200).json(user);
+      });
+    } catch (error) {
+      next(error);
+    }
+  })(req, res, next);
+});
+
+app.post('/auth/sign-up', async (req, res, next) => {
+  const { body: user } = req;
+
+  try {
+    await axios({
+      url: `${config.apiUrl}/api/auth/sign-up`,
+      method: 'post',
+      data: user,
+    });
+
+    res.status(201).json({ message: 'user created' });
+  } catch (error) {
+    next(error);
+  }
+});
+
 app.get('*', renderApp);
 
-app.listen(PORT, () => {
-  console.log(`Server on http://localhost:${PORT}`);
+app.listen(port, () => {
+  console.log(`Server on http://localhost:${port}`);
 });

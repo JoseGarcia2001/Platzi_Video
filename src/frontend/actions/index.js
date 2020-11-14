@@ -1,4 +1,7 @@
 // eslint-disable-next-line import/prefer-default-export
+
+import axios from 'axios';
+
 export const setFavorite = (payload) => ({
   type: 'SET_FAVORITE',
   payload,
@@ -33,3 +36,10 @@ export const searchingVideo = (payload) => ({
   type: 'SEARCHING_VIDEO',
   payload,
 });
+
+export const registerUser = (payload, redirectURL) => {
+  return (dispatch) => {
+    axios.post('/auth/sign-up', payload)
+      .then(data);
+  };
+};
