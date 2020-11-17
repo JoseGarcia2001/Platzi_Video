@@ -5,7 +5,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import Header from '../components/Header';
-import { loginRequest } from '../actions';
+import { loginUser } from '../actions';
 import '../assets/styles/components/Login.scss';
 import googleIcon from '../assets/static/google-icon.png';
 import TwitterIcon from '../assets/static/twitter-icon.png';
@@ -24,8 +24,7 @@ const Login = (props) => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    props.loginRequest(form);
-    props.history.push('/');
+    props.loginUser(form, '/');
   };
 
   return (
@@ -51,7 +50,7 @@ const Login = (props) => {
               placeholder="Contraseña"
               onChange={handleInput}
             />
-            <button className="button">Iniciar sesión</button>
+            <button className="button" type="submit">Iniciar sesión</button>
             <div className="login__container--remember-me">
               <label>
                 <input type="checkbox" name="" id="cbox1" value="checkbox" />
@@ -82,7 +81,7 @@ const Login = (props) => {
 };
 
 const mapDispatchToProps = {
-  loginRequest,
+  loginUser,
 };
 
 export default connect(null, mapDispatchToProps)(Login);

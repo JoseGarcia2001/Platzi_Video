@@ -15,7 +15,6 @@ import cookieParser from 'cookie-parser';
 import session from 'express-session';
 import reducer from '../frontend/reducers';
 import serverRoutes from '../frontend/routes/serverRoutes';
-import initialState from '../frontend/initialState';
 import getManifest from './getManifest';
 import { config } from './config';
 
@@ -75,14 +74,51 @@ const setResponse = (html, preloadedState, manifest) => {
 </html>`;
 };
 
-const renderApp = (req, res) => {
+const renderApp = async (req, res) => {
+
+  let initialState;
+
+  const { token, email, name, id } = req.cookies;
+
+  try {
+    let movieList = await axios({
+      url: `${config.apiUrl}/api/movies`,
+      headers: { Authorization: `Bearer ${token}` },
+      method: 'get',
+    });
+
+    movieList = movieList.data.data;
+
+    initialState = {
+      user: {
+        id,
+        email,
+        name,
+      },
+      playing: {},
+      searching: [],
+      myList: [],
+      trends: movieList.filter((movie) => movie.contentRating === 'PG'),
+      originals: movieList.filter((movie) => movie.contentRating !== 'PG'),
+    };
+  } catch (error) {
+    initialState = {
+      user: {},
+      playing: {},
+      searching: [],
+      myList: [],
+      trends: [],
+      originals: [],
+    };
+  }
+
   const store = createStore(reducer, initialState);
   const preloadedState = store.getState();
-
+  const isLogged = (initialState.user.id);
   const html = renderToString(
     <Provider store={store}>
       <StaticRouter location={req.url} context={{}}>
-        {renderRoutes(serverRoutes)}
+        {renderRoutes(serverRoutes(isLogged))}
       </StaticRouter>
     </Provider>,
   );
@@ -120,13 +156,21 @@ app.post('/auth/sign-up', async (req, res, next) => {
   const { body: user } = req;
 
   try {
-    await axios({
+    const userData = await axios({
       url: `${config.apiUrl}/api/auth/sign-up`,
       method: 'post',
-      data: user,
+      data: {
+        'email': user.email,
+        'name': user.name,
+        'password': user.password,
+      },
     });
 
-    res.status(201).json({ message: 'user created' });
+    res.status(201).json({
+      name: user.name,
+      email: user.email,
+      id: userData.data,
+    });
   } catch (error) {
     next(error);
   }

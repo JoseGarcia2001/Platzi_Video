@@ -37,9 +37,41 @@ export const searchingVideo = (payload) => ({
   payload,
 });
 
+export const setError = (payload) => ({
+  type: 'SET_ERROR',
+  payload,
+});
+
 export const registerUser = (payload, redirectURL) => {
   return (dispatch) => {
     axios.post('/auth/sign-up', payload)
-      .then(data);
+      .then(({ data }) => dispatch(registerRequest(data)))
+      .then(() => {
+        window.location.href = redirectURL;
+      })
+      .catch((error) => dispatch(setError(error)));
+  };
+};
+
+export const loginUser = (payload, redirectURL) => {
+  return (dispatch) => {
+    axios({
+      url: '/auth/sign-in',
+      method: 'post',
+      auth: {
+        username: payload.email,
+        password: payload.password,
+      },
+    })
+      .then(({ data }) => {
+        document.cookie = `email=${data.user.email}`;
+        document.cookie = `name=${data.user.name}`;
+        document.cookie = `id=${data.user.id}`;
+        dispatch(loginRequest(data.user));
+      })
+      .then(() => {
+        window.location.href = redirectURL;
+      })
+      .catch((err) => setError(err));
   };
 };
