@@ -28,17 +28,17 @@ exports[`<Header /> Header Snpashot 1`] = `
       <p>
         Perfil
       </p>
+      <ul>
+        <li>
+          <a
+            href="/login"
+            onClick={[Function]}
+          >
+            Iniciar Sesion
+          </a>
+        </li>
+      </ul>
     </div>
-    <ul>
-      <li>
-        <a
-          href="/login"
-          onClick={[Function]}
-        >
-          Iniciar Sesion
-        </a>
-      </li>
-    </ul>
   </div>
 </header>
 `;

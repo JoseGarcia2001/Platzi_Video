@@ -12,7 +12,7 @@ import userIcon from '../assets/static/user-icon.png';
 
 const Header = (props) => {
   const { user, isLogin, isRegister } = props;
-  const hasUser = Object.keys(user).length > 0;
+  const hasUser = (user.id);
 
   const handleLogoutRequest = () => {
     document.cookie = 'email=';
@@ -38,27 +38,28 @@ const Header = (props) => {
             alt={hasUser ? user.email : 'userIcon'}
           />
           <p>{hasUser ? user.name : 'Perfil'}</p>
-        </div>
-        <ul>
-          {hasUser ?
-            (
+
+          <ul>
+            {hasUser ? (
               <>
                 <li>
                   <Link to="a">Cuenta</Link>
                 </li>
                 <li>
-                  <Link to="/login" onClick={handleLogoutRequest}>Cerrar Sesión</Link>
+                  <Link to="/login" onClick={handleLogoutRequest}>
+                    Cerrar Sesión
+                  </Link>
                 </li>
               </>
-            ) :
-            (
+            ) : (
               <>
                 <li>
                   <Link to="/login">Iniciar Sesion</Link>
                 </li>
               </>
             )}
-        </ul>
+          </ul>
+        </div>
       </div>
     </header>
   );

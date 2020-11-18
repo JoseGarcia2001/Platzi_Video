@@ -50,7 +50,9 @@ const Login = (props) => {
               placeholder='Contraseña'
               onChange={handleInput}
             />
-            <button className='button' type='submit'>Iniciar sesión</button>
+            <button className='button' type='submit'>
+              Iniciar sesión
+            </button>
             <div className='login__container--remember-me'>
               <label>
                 <input type='checkbox' name='' id='cbox1' value='checkbox' />
@@ -60,14 +62,18 @@ const Login = (props) => {
             </div>
           </form>
           <section className='login__container--social-media'>
-            <div>
-              <img src={googleIcon} alt='Google' />
-              Inicia sesión con Google
-            </div>
-            <div>
-              <img src={TwitterIcon} alt='Twitter' />
-              Inicia sesión con Twitter
-            </div>
+            <Link to='/'>
+              <div>
+                <img src={googleIcon} alt='Google' />
+                Inicia sesión con Google
+              </div>
+            </Link>
+            <Link to='/'>
+              <div>
+                <img src={TwitterIcon} alt='Twitter' />
+                Inicia sesión con Twitter
+              </div>
+            </Link>
           </section>
           <p className='login__container--register'>
             ¿No tienes ninguna cuenta?

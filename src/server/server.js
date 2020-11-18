@@ -122,7 +122,10 @@ const renderApp = async (req, res) => {
       </StaticRouter>
     </Provider>,
   );
-  res.set('Content-Security-Policy', "img-src 'self' http://dummyimage.com");
+  res.set(
+    'Content-Security-Policy',
+    "img-src 'self' http://dummyimage.com https://gravatar.com",
+  );
   res.send(setResponse(html, preloadedState, req.hasManifest));
 };
 
