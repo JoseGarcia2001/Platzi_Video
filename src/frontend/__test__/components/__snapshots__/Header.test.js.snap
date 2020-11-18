@@ -1,0 +1,44 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Header /> Header Snpashot 1`] = `
+<header
+  className="header"
+>
+  <a
+    href="/"
+    onClick={[Function]}
+  >
+    <img
+      alt="logo platzi video"
+      className="header__img"
+      src="test-file-stub"
+    />
+  </a>
+  <div
+    className="header__menu"
+  >
+    <div
+      className="header__menu--profile"
+    >
+      <img
+        alt="userIcon"
+        className="user__icon"
+        src="test-file-stub"
+      />
+      <p>
+        Perfil
+      </p>
+    </div>
+    <ul>
+      <li>
+        <a
+          href="/login"
+          onClick={[Function]}
+        >
+          Iniciar Sesion
+        </a>
+      </li>
+    </ul>
+  </div>
+</header>
+`;

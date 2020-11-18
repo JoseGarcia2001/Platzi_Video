@@ -57,7 +57,7 @@ typings/
 .yarn-integrity
 
 # dotenv environment variables file
-.env
+/.env
 
 # IDE
 .idea/*
@@ -73,6 +73,11 @@ typings/
 yarn-error.log
 
 # Build
+<<<<<<< HEAD
 dist/
 
 src/server/public
+=======
+src/server/public
+
+>>>>>>> integracion/BFF
