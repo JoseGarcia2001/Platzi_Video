@@ -59,6 +59,7 @@ const setResponse = (html, preloadedState, manifest) => {
   return `<!DOCTYPE html>
 <html lang="en">
   <head>
+    <link  rel="icon"   href="https://i.postimg.cc/pXsqV1sN/Plugin-Icon-1.png" type="image/png" />
     <link rel="stylesheet "type="text/css" href=${mainStyles}>
     <meta charset="UTF-8" />
     <title>Platzi Video</title>
@@ -66,7 +67,10 @@ const setResponse = (html, preloadedState, manifest) => {
   <body>
     <div id="app">${html}</div>
     <script>
-      window.__PRELOADED_STATE__ = ${JSON.stringify(preloadedState).replace(/</g, '\\u003c')}
+      window.__PRELOADED_STATE__ = ${JSON.stringify(preloadedState).replace(
+    /</g,
+    '\\u003c',
+  )}
     </script>
     <script src=${mainBuild} type="text/javascript"></script>
     <script src=${vendorBuild} type="text/javascript"></script>
@@ -124,7 +128,7 @@ const renderApp = async (req, res) => {
   );
   res.set(
     'Content-Security-Policy',
-    "img-src 'self' http://dummyimage.com https://gravatar.com",
+    "img-src 'self' http://dummyimage.com https://gravatar.com https://i.postimg.cc/pXsqV1sN/Plugin-Icon-1.png",
   );
   res.send(setResponse(html, preloadedState, req.hasManifest));
 };
