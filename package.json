@@ -9,7 +9,7 @@
   },
   "scripts": {
     "build": "webpack-cli --config webpack.config.js",
-    "start": "nodemon ./src/server/index.js",
+    "start": "nodemon src/server/index.js",
     "test": "jest",
     "test:watch": "jest --watch",
     "test:coverage": "jest --coverage"
