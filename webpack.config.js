@@ -1,13 +1,13 @@
 /* eslint-disable quotes */
 const path = require("path");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-const webpack = require('webpack');
-const CompressionWebpackPlugin = require('compression-webpack-plugin');
-const ManifestWebpackPlugin = require('webpack-manifest-plugin');
+const webpack = require("webpack");
+const CompressionWebpackPlugin = require("compression-webpack-plugin");
+const ManifestWebpackPlugin = require("webpack-manifest-plugin");
 
-require('dotenv').config();
+require("dotenv").config();
 
-const isDev = process.env.ENV === 'development';
+const isDev = process.env.ENV === "development";
 const entry = ["./src/frontend/index.js"];
 
 if (isDev) {
@@ -29,11 +29,13 @@ module.exports = {
     splitChunks: {
       cacheGroups: {
         vendors: {
-          name: 'vendors',
-          chunks: 'all',
+          name: "vendors",
+          chunks: "all",
           reuseExistingChunk: true,
           priority: 1,
-          filename: isDev ? "assets/vendor.js" : "assets/vendor-[contenthash].js",
+          filename: isDev ?
+            "assets/vendor.js" :
+            "assets/vendor-[contenthash].js",
           enforce: true,
           test: /[\\/]node_modules[\\/]/,
         },
@@ -84,14 +86,5 @@ module.exports = {
     new MiniCssExtractPlugin({
       filename: isDev ? "assets/app.css" : "assets/app-[hash].css",
     }),
-    isDev ?
-      () => {} :
-      new CleanWebpackPlugin({
-        cleanOnceBeforeBuildPatterns: path.resolve(__dirname, 'src/server/public'),
-      }),
-    isDev ? new ESLintPlugin({
-      files: 'src/frontend',
-    }) :
-      () => { },
   ],
 };
