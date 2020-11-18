@@ -33,6 +33,7 @@ const Register = (props) => {
               className='input'
               type='text'
               placeholder='Nombre'
+              autoComplete='off'
               onChange={handleInput}
             />
             <input
@@ -40,16 +41,20 @@ const Register = (props) => {
               className='input'
               type='text'
               placeholder='Correo'
+              autoComplete='off'
               onChange={handleInput}
             />
             <input
               name='password'
               className='input'
               type='password'
+              autoComplete='off'
               placeholder='Contraseña'
               onChange={handleInput}
             />
-            <button className='button' type='submit'>Registrarme</button>
+            <button className='button' type='submit'>
+              Registrarme
+            </button>
           </form>
           <p>
             <Link to='/login'>Iniciar Sesion</Link>

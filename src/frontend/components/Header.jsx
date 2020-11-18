@@ -30,37 +30,39 @@ const Header = (props) => {
       <Link to="/">
         <img className="header__img" src={logo} alt="logo platzi video" />
       </Link>
-      <div className="header__menu">
-        <div className="header__menu--profile">
-          <img
-            className="user__icon"
-            src={hasUser ? gravatar(user.email) : userIcon}
-            alt={hasUser ? user.email : 'userIcon'}
-          />
-          <p>{hasUser ? user.name : 'Perfil'}</p>
+      {hasUser && (
+        <div className="header__menu">
+          <div className="header__menu--profile">
+            <img
+              className="user__icon"
+              src={hasUser ? gravatar(user.email) : userIcon}
+              alt={hasUser ? user.email : 'userIcon'}
+            />
+            <p>{hasUser ? user.name : 'Perfil'}</p>
 
-          <ul>
-            {hasUser ? (
-              <>
-                <li>
-                  <Link to="a">Cuenta</Link>
-                </li>
-                <li>
-                  <Link to="/login" onClick={handleLogoutRequest}>
-                    Cerrar Sesión
-                  </Link>
-                </li>
-              </>
-            ) : (
-              <>
-                <li>
-                  <Link to="/login">Iniciar Sesion</Link>
-                </li>
-              </>
-            )}
-          </ul>
+            <ul>
+              {hasUser ? (
+                <>
+                  <li>
+                    <Link to="a">Cuenta</Link>
+                  </li>
+                  <li>
+                    <Link to="/login" onClick={handleLogoutRequest}>
+                      Cerrar Sesión
+                    </Link>
+                  </li>
+                </>
+              ) : (
+                <>
+                  <li>
+                    <Link to="/login">Iniciar Sesion</Link>
+                  </li>
+                </>
+              )}
+            </ul>
+          </div>
         </div>
-      </div>
+      )}
     </header>
   );
 };
