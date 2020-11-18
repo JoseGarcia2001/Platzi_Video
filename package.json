@@ -2,12 +2,14 @@
   "name": "platzivideo",
   "version": "1.0.0",
   "description": "In this repository I will be recreating Platzi video from the hand of the Java Script school",
-  "main": "index.js",
+  "main": "src/server/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "build": "webpack-cli --config webpack.config.js",
     "start": "webpack-dev-server --open --mode development",
-    "start:ssr": "nodemon ./src/server/index.js"
+    "start:ssr": "nodemon ./src/server/index.js",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage"
   },
   "repository": {
     "type": "git",
@@ -54,7 +56,9 @@
     "react-router-dom": "^5.2.0",
     "redux": "^4.0.5",
     "redux-thunk": "^2.3.0",
-    "webpack-manifest-plugin": "^2.2.0"
+    "webpack-manifest-plugin": "^2.2.0",
+    "enzyme": "^3.11.0",
+    "enzyme-adapter-react-16": "^1.15.5"
   },
   "devDependencies": {
     "@babel/core": "^7.11.6",
@@ -63,13 +67,25 @@
     "babel-loader": "^8.1.0",
     "css-loader": "^4.3.0",
     "file-loader": "^5.1.0",
+    "jest": "^26.6.3",
     "mini-css-extract-plugin": "^0.10.1",
     "node-sass": "^4.14.1",
     "nodemon": "^2.0.6",
+    "react-test-renderer": "^17.0.1",
     "sass-loader": "^10.0.2",
     "webpack": "^4.44.2",
     "webpack-cli": "^3.3.12",
     "webpack-dev-middleware": "^4.0.0",
     "webpack-hot-middleware": "^2.25.0"
+  },
+  "jest": {
+    "verbose": true,
+    "setupFilesAfterEnv": [
+      "<rootDir>/src/frontend/__test__/setupTest.js"
+    ],
+    "moduleNameMapper": {
+      "\\.(jpg|jpeg|png|gif)$": "<rootDir>/src/frontend/__mocks__/fileMocks.js",
+      "\\.(scss|css|sass)$": "<rootDir>/src/frontend/__mocks__/styleMock.js"
+    }
   }
 }
