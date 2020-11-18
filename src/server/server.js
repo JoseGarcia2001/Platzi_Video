@@ -13,12 +13,14 @@ import axios from 'axios';
 import boom from '@hapi/boom';
 import cookieParser from 'cookie-parser';
 import session from 'express-session';
+import dotenv from 'dotenv';
 import reducer from '../frontend/reducers';
 import serverRoutes from '../frontend/routes/serverRoutes';
 import getManifest from './getManifest';
-import { config } from './config';
 
-const { port, env } = config;
+dotenv.config();
+
+const { port, env } = process.env;
 
 //Strategies
 require('./utils/auth/strategies/basic');
