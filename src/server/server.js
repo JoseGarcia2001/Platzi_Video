@@ -13,14 +13,13 @@ import axios from 'axios';
 import boom from '@hapi/boom';
 import cookieParser from 'cookie-parser';
 import session from 'express-session';
-import dotenv from 'dotenv';
 import reducer from '../frontend/reducers';
 import serverRoutes from '../frontend/routes/serverRoutes';
 import getManifest from './getManifest';
 
-dotenv.config();
+import { config } from './config';
 
-const { port, env } = process.env;
+const { port, env } = config;
 
 //Strategies
 require('./utils/auth/strategies/basic');
@@ -81,7 +80,6 @@ const setResponse = (html, preloadedState, manifest) => {
 };
 
 const renderApp = async (req, res) => {
-
   let initialState;
 
   const { token, email, name, id } = req.cookies;
@@ -120,7 +118,7 @@ const renderApp = async (req, res) => {
 
   const store = createStore(reducer, initialState);
   const preloadedState = store.getState();
-  const isLogged = (initialState.user.id);
+  const isLogged = initialState.user.id;
   const html = renderToString(
     <Provider store={store}>
       <StaticRouter location={req.url} context={{}}>
@@ -169,9 +167,9 @@ app.post('/auth/sign-up', async (req, res, next) => {
       url: `${config.apiUrl}/api/auth/sign-up`,
       method: 'post',
       data: {
-        'email': user.email,
-        'name': user.name,
-        'password': user.password,
+        email: user.email,
+        name: user.name,
+        password: user.password,
       },
     });
 
