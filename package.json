@@ -37,7 +37,7 @@
     "babel-eslint": "^10.1.0",
     "babel-loader": "^8.1.0",
     "classnames": "^2.2.6",
-    "compression-webpack-plugin": "^6.1.1",
+    "compression-webpack-plugin": "^8.0.1",
     "cookie-parser": "^1.4.5",
     "css-loader": "^4.3.0",
     "dotenv": "^8.2.0",
@@ -71,7 +71,7 @@
     "redux": "^4.0.5",
     "redux-thunk": "^2.3.0",
     "sass-loader": "^10.0.2",
-    "webpack": "^4.44.2",
+    "webpack": "^5.1.1",
     "webpack-cli": "^3.3.12",
     "webpack-manifest-plugin": "^2.2.0"
   },
