@@ -28,7 +28,7 @@
   "dependencies": {
     "@babel/core": "^7.12.3",
     "@babel/polyfill": "^7.12.1",
-    "@babel/preset-env": "^7.12.1",
+    "@babel/preset-env": "^7.12.13",
     "@babel/preset-react": "^7.12.5",
     "@babel/register": "^7.12.1",
     "@hapi/boom": "^9.1.0",
